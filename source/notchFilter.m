@@ -1,0 +1,6 @@
+function [emg_data_filtered] = notchFilter(emg_data_band,fs, order,  min_notch,max_notch)
+Notch = designfilt('bandstopfir','FilterOrder',order ,... 
+'CutoffFrequency1',min_notch,'CutoffFrequency2',max_notch,... 
+'SampleRate',fs);
+emg_data_filtered = filter(Notch, emg_data_band);
+end
